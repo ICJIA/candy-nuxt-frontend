@@ -13,6 +13,7 @@ useSeoMeta({ title: 'Sciences' })
       :title="science.Name"
       :to="science.slug ? `/sciences/${science.slug}` : null"
       :cover="science.Cover"
+      :excerpt="blocksExcerpt(science.Description)"
     >
       <ul v-if="science.categories?.length" class="tags">
         <li v-for="category in science.categories" :key="category.documentId">

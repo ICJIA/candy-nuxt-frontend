@@ -157,16 +157,22 @@ h1 {
 
 .hero {
   padding-block: 1.5rem 2.5rem;
-  max-width: 40rem;
 }
 
 .hero h1 {
   margin-bottom: 0.75rem;
 }
 
-.hero p {
-  font-size: 1.125rem;
-  margin: 0;
+.hero-intro {
+  color: var(--muted);
+}
+
+.hero-intro > :first-child {
+  margin-top: 0;
+}
+
+.hero-intro > :last-child {
+  margin-bottom: 0;
 }
 
 .section + .section {
@@ -211,6 +217,8 @@ a.card:hover {
 
 .card-cover {
   aspect-ratio: 16 / 10;
+  /* Without this, a tall image's intrinsic size overrides the aspect ratio */
+  overflow: hidden;
   background: var(--accent-soft);
   color: var(--accent);
   display: grid;
@@ -229,6 +237,14 @@ a.card:hover {
   font-size: 1.0625rem;
   margin: 0;
   padding: 0.875rem 1rem;
+}
+
+.card-excerpt {
+  margin: -0.375rem 0 0;
+  padding: 0 1rem 1rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
 
 .tags {
@@ -305,9 +321,12 @@ a.category-row:hover {
   margin: 0 0 2rem;
 }
 
+/* Cap tall (portrait) covers so the text below stays in view */
 .cover img,
 .cover video {
   width: 100%;
+  max-height: 28rem;
+  object-fit: cover;
   border-radius: var(--radius);
 }
 

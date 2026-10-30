@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { data: homepage } = await useHomepage()
+
 const links = [
   { to: '/sciences', label: 'Sciences' },
   { to: '/technologies', label: 'Technologies' },
@@ -12,7 +14,7 @@ const links = [
   <header class="site-header">
     <div class="container site-header-inner">
       <NuxtLink to="/" class="brand">
-        Candy
+        {{ homepage?.SiteName ?? 'Candy' }}
       </NuxtLink>
       <nav aria-label="Main">
         <NuxtLink v-for="link in links" :key="link.to" :to="link.to">

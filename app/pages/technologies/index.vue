@@ -13,6 +13,7 @@ useSeoMeta({ title: 'Technologies' })
       :title="technology.Name"
       :to="technology.slug ? `/technologies/${technology.slug}` : null"
       :cover="technology.Cover"
+      :excerpt="blocksExcerpt(technology.Description)"
     />
   </div>
   <p v-else class="muted">

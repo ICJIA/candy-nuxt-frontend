@@ -88,6 +88,22 @@ export interface Technology extends StrapiDocument {
   Cover: StrapiMedia | null
 }
 
+export interface DefaultSeo {
+  id: number
+  metaTitle: string
+  // Field name is misspelled in the Strapi schema
+  metaDesciption: string
+  shareImage: StrapiMedia | null
+}
+
+export interface Homepage extends StrapiDocument {
+  SiteName: string
+  favicon: StrapiMedia | null
+  // Field name is misspelled in the Strapi schema
+  siteDecription: BlockNode[]
+  defaultSeo: DefaultSeo | null
+}
+
 export interface About extends StrapiDocument {
   Name: string
   // Field name is misspelled in the Strapi schema

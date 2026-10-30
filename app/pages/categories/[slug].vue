@@ -17,6 +17,7 @@ useSeoMeta({ title: () => category.value.Name })
       :title="science.Name"
       :to="science.slug ? `/sciences/${science.slug}` : null"
       :cover="science.Cover"
+      :excerpt="blocksExcerpt(science.Description)"
     />
   </div>
   <p v-else class="muted">

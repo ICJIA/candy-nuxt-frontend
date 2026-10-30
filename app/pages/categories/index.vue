@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const NuxtLink = resolveComponent('NuxtLink')
 const categories = await useContent<Category[]>('content/categories')
 
 useSeoMeta({ title: 'Categories' })
@@ -9,7 +10,7 @@ useSeoMeta({ title: 'Categories' })
   <ul v-if="categories.length" class="category-list">
     <li v-for="category in categories" :key="category.documentId">
       <component
-        :is="category.slug ? resolveComponent('NuxtLink') : 'div'"
+        :is="category.slug ? NuxtLink : 'div'"
         :to="category.slug ? `/categories/${category.slug}` : undefined"
         class="category-row"
       >

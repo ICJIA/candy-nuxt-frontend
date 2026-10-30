@@ -1,18 +1,23 @@
 <script setup lang="ts">
-const [sciences, technologies] = await Promise.all([
+const [{ data: homepage }, sciences, technologies] = await Promise.all([
+  useHomepage(),
   useContent<Science[]>('content/sciences'),
   useContent<Technology[]>('content/technologies'),
 ])
 
-useSeoMeta({ title: '', description: 'Sciences and technologies, managed in Strapi.' })
+// The home page title is the SEO title on its own, without the " · Site name" suffix
+useSeoMeta({
+  title: () => homepage.value?.defaultSeo?.metaTitle ?? homepage.value?.SiteName ?? 'Candy',
+  titleTemplate: '%s',
+})
 </script>
 
 <template>
   <section class="hero">
-    <h1>Explore sciences and technologies</h1>
-    <p class="muted">
-      Everything on this site is published from the Strapi admin.
-    </p>
+    <h1>{{ homepage?.SiteName ?? 'Candy' }}</h1>
+    <div v-if="homepage?.siteDecription" class="prose hero-intro">
+      <StrapiBlocks :blocks="homepage.siteDecription" />
+    </div>
   </section>
 
   <section class="section">
@@ -29,6 +34,7 @@ useSeoMeta({ title: '', description: 'Sciences and technologies, managed in Stra
         :title="science.Name"
         :to="science.slug ? `/sciences/${science.slug}` : null"
         :cover="science.Cover"
+        :excerpt="blocksExcerpt(science.Description)"
       />
     </div>
     <p v-else class="muted">
@@ -50,6 +56,7 @@ useSeoMeta({ title: '', description: 'Sciences and technologies, managed in Stra
         :title="technology.Name"
         :to="technology.slug ? `/technologies/${technology.slug}` : null"
         :cover="technology.Cover"
+        :excerpt="blocksExcerpt(technology.Description)"
       />
     </div>
     <p v-else class="muted">

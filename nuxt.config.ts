@@ -17,9 +17,9 @@ export default defineNuxtConfig({
   },
 
   app: {
+    // The favicon comes from the Strapi Homepage (see app.vue)
     head: {
       htmlAttrs: { lang: 'en' },
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
   },
 })
