@@ -1,5 +1,0 @@
-allowBuilds:
-  esbuild: set this to true or false
-minimumReleaseAgeExclude:
-  - '@vue/language-core@3.3.14'
-  - vue-tsc@3.3.14
