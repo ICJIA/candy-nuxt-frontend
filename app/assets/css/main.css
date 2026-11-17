@@ -307,7 +307,7 @@ a.category-row:hover {
 /* Articles */
 
 .article {
-  max-width: 46rem;
+  max-width: 100%;
 }
 
 .back {

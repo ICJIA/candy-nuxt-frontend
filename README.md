@@ -20,6 +20,16 @@ In `.env`:
   Category and About instead. Draft previews always need the token.
 - `NUXT_PREVIEW_SECRET`: must match `PREVIEW_SECRET` in the Strapi `.env`.
 
+## Production
+
+```bash
+npm run build   # outputs .output/
+npm run start   # node .output/server/index.mjs, loads .env if present
+```
+
+Set `PORT` / `HOST` to change where it listens (default `3000`). In production you
+can also set the `NUXT_*` variables in the environment instead of `.env`.
+
 ## Strapi Preview
 
 In the Strapi `.env`, set:
