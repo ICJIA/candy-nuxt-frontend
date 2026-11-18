@@ -8,6 +8,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Server-only: used by server/api/* to talk to Strapi
     strapiUrl: 'http://localhost:1337',
+    // Defaults to `${strapiUrl}/graphql` when empty. Use https if the server redirects
+    // http -> https: the redirect turns the POST into a GET and drops the query.
+    strapiGraphqlUrl: '',
     strapiToken: '',
     previewSecret: '',
     public: {

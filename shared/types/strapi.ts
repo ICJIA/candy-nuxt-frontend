@@ -1,8 +1,7 @@
-// Shapes returned by the Strapi 5 REST API for this project's content types.
+// Shapes returned by this app's server/api routes, fetched from Strapi 5 GraphQL.
 // Mirrors candy-strapi-linux/src/api/*/content-types/*/schema.json; update both together.
 
 export interface StrapiDocument {
-  id: number
   documentId: string
   createdAt: string
   updatedAt: string
@@ -10,7 +9,6 @@ export interface StrapiDocument {
 }
 
 export interface StrapiMedia {
-  id: number
   documentId: string
   name: string
   alternativeText: string | null
@@ -19,11 +17,6 @@ export interface StrapiMedia {
   height: number | null
   mime: string
   url: string
-}
-
-export interface StrapiResponse<T> {
-  data: T
-  meta: Record<string, unknown>
 }
 
 // Blocks editor (type: "blocks") nodes
